@@ -1,0 +1,61 @@
+﻿@model _2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.Identity.AppUser
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="vh-100" style="background-color: #f4f5f7;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-12 mb-4 mb-lg-0">
+                <div class="card mb-3" style="border-radius: .5rem;">
+                    <div class="row g-0">
+                        <div class="col-md-4 border-right align-items-center align-self-center text-center p-3 py-5">
+                            <img src="~/img/@Model.ImgUrl" class="img-fluid"/>
+                        </div>
+                        <div class="col-md-8">
+                            @using (Html.BeginForm("InforUser", "Account", FormMethod.Post, new { enctype="multipart/from-data"}))
+                            {
+                             <div class="card-body p-4">
+                                <h6>Information</h6>
+                                <hr class="mt-0 mb-4">
+                                <div class="row pt-1">
+                                    <div class="col-6 mb-3">
+                                        <h6>Full Name</h6>
+                                        @Html.TextBoxFor(x => Model.FullName, new { @class = "input-item", placeholder = "FullName", style = "width: 100%" })
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6>Email</h6>
+                                        @Html.TextBoxFor(x => Model.Email, new { @class = "input-item", placeholder = "Email", style = "width: 100%" })
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6>Address</h6>
+                                        @Html.TextBoxFor(x => Model.Address, new { @class = "input-item", placeholder = "Birthday", style = "width: 100%" })
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6>Phone</h6>
+                                        @Html.TextBoxFor(x => Model.PhoneNumber, new { @class = "input-item", placeholder = "Phone", style = "width: 100%" })
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6>BirthDay</h6>
+                                        @Html.TextBoxFor(x => Model.Birthday, new { @class = "input-item", placeholder = "Birthday", Type = "date", style = "width: 100%" })
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6>Image</h6>
+                                        @Html.TextBoxFor(x => Model.ImgUrl, new { @class = "from-control", Type = "file", value = "@Model.ImgUrl", style = "width: 100%" })
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <button type="submit" class="btn btn-primary">Save profile</button>
+                                    </div>
+                                </div>
+                             </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,73 @@
+﻿@model _2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.ViewModel.RegisterVM
+
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<div class="" style="width:50%; margin: 0 auto">
+    <div class=""; border-radius: 50px; padding: 40px">
+        <h2 class="from-title" style="margin-bottom:30px; text-align: center;padding-top: 30px">Create</h2>
+        @using (Html.BeginForm("adduser", "user", FormMethod.Post, new { area = "Admin", enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <!-- Full Name -->
+                <div class="col-md-12">
+                    @Html.LabelFor(x => x.FullName)
+                    @Html.TextBoxFor(x => x.FullName, new { placeholder = "FullName", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.FullName)
+                </div>
+
+                <!-- User Name -->
+                <div class="col-md-12">
+                    @Html.LabelFor(x => x.Username)
+                    @Html.TextBoxFor(x => x.Username, new { placeholder = "UserName", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Username)
+                </div>
+
+                <!-- Email Address -->
+                <div class="col-md-12">
+                    @Html.LabelFor(x => x.Email)
+                    @Html.TextBoxFor(x => x.Email, new { placeholder = "Email", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+
+                <!-- Password -->
+                <div class="col-md-12">
+                    @Html.LabelFor(x => x.Password)
+                    @Html.PasswordFor(x => x.Password, new { placeholder = "Password", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Password)
+                </div>
+
+                <!-- Password Confirmation -->
+                <div class="col-md-12">
+                    @Html.LabelFor(x => x.ComfirmPassword)
+                    @Html.PasswordFor(x => x.ComfirmPassword, new { placeholder = "ComfirmPassword", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.ComfirmPassword)
+                </div>
+
+                <!-- Phone Number -->
+                <div class="col-md-12">
+                    @Html.LabelFor(x => x.Phone)
+                    @Html.TextBoxFor(x => x.Phone, new { placeholder = "Phone", @class = "form-control" })
+                </div>
+
+                <!-- Date of Birth -->
+                @*<div class="col-md-12">
+                    @Html.LabelFor(x => x.Birthday)
+                    @Html.TextBoxFor(x => x.Birthday, new { placeholder = "Birthday", @class = "form-control", Type = "date" })
+                </div>*@
+
+                <!-- Address -->
+                <div class="col-md-12">
+                    @Html.LabelFor(x => x.Address)
+                    @Html.TextBoxFor(x => x.Address, new { placeholder = "Address", @class = "form-control" })
+                </div>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block py-2" style="margin:10px 0px">Create</button>
+
+        }
+    </div>
+</div>
+

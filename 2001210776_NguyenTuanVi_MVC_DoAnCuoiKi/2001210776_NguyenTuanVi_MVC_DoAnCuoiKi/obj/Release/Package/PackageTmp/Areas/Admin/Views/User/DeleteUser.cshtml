@@ -1,0 +1,34 @@
+﻿@model _2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.Identity.AppUser
+
+@{
+    ViewBag.Title = "DeleteUser";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<div class="signup-image" style="text-align:center;padding: 10px 40px">
+   @if(Model.ImgUrl != null)
+   {
+
+   }else
+   {
+
+   }
+</div>
+<div class="" style="flex:1; padding:0px 30px">
+    @using (Html.BeginForm("DeleteUser", "User", FormMethod.Post, new { area = "Admin", enctype = "multipart/form-data" }))
+    {
+        <div class="from-group mb-3 ">
+            <p><span class="me-3">Full Name:</span> @Model.FullName</p>
+        </div>
+        <div class="from-group mb-3 ">
+            <p><span class="me-3">Full Name:</span> @Model.UserName</p>
+        </div>
+        <div class="from-group mb-3">
+            <button type="submit" class="btn btn-primary">Delete</button>
+            <div class="btn btn-info">
+                @Html.ActionLink("Back", "Index", null, new { style = "color: white; text-decoration: none;" })
+            </div>
+        </div>
+    }
+</div>
+

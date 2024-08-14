@@ -1,0 +1,73 @@
+﻿@model _2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.Identity.AppUser
+
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<section class="vh-100" style="background-color: #f4f5f7;">
+    <div class="container py-5 h-100" style="padding: 30px 150px"">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-12 mb-4 mb-lg-0">
+                <div class="card mb-3" style="border-radius: .5rem;">
+                    <div class="row g-0">
+                        <div class="col-md-4 border-right align-items-center align-self-center text-center p-3 py-5">
+                            @if (Model.ImgUrl != null)
+                            {
+                                <img src="~/images/@Html.DisplayFor(row => Model.ImgUrl)" style=" width: 200px; height: 200px; object-fit: COVER;  border-radius: 50%;" alt="sing up image">
+                            }
+                            else
+                            {
+                                <img src="~/images/NoImgUser.png" style=" width: 200px; height: 200px; object-fit: COVER;  border-radius: 50%;" alt="sing up image">
+
+                            }
+                        </div>
+                        <div class="col-md-8">
+                            @using (Html.BeginForm("edituser", "user", FormMethod.Post, new { enctype = "multipart/form-data", area = "Admin" }))
+                            {
+                            <div class="card-body p-4">
+                                <h2 class="form-title text-dark" style="margin-bottom:20px;text-align:center">Profile</h2>
+                                <hr class="mt-0 mb-4">
+                                <label class="">Full Name</label>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(tmp => Model.FullName, new { @class = "input-item", placeholder = "Full Name", style = "width: 100%" })
+                                </div>
+                                <label class="">User Name</label>
+                                <div class="form-group mb-3">
+                                    @Html.TextBoxFor(tmp => Model.UserName, new { @class = "input-item", placeholder = "User Name", style = "width: 100%" })
+                                </div>
+                                <label class="">Email</label>
+                                <div class="form-group mb-3">
+                                    @Html.TextBoxFor(tmp => Model.Email, new { @class = "input-item", placeholder = "Your Email", style = "width: 100%" })
+                                </div>
+                                <label class="">Phone number</label>
+                                <div class="form-group mb-3">
+                                    @Html.TextBoxFor(tmp => Model.PhoneNumber, new { @class = "input-item", placeholder = "Phone Number", style = "width: 100%" })
+                                </div>
+                                @*<label class="">BirthDay</label>
+                                <div class="form-group mb-3">
+                                    @Html.TextBoxFor(tmp => Model.Birthday, new { @class = "input-item", placeholder = "Your Birthday", Type = "date", style = "width: 100%" })
+                                </div>*@
+                                <label class="">Address</label>
+                                <div class="form-group mb-3">
+                                    @Html.TextBoxFor(tmp => Model.Address, new { @class = "input-item", placeholder = "Your Address", style = "width: 100%" })
+                                </div>
+                                <label class="">Image</label>
+                                <div class="form-group mb-3">
+                                    <input type="file" name="imageEidtUser" class="form-control" />
+                                    @Html.ValidationMessageFor(row => row.ImgUrl)
+                                </div>
+                                <div class="form-group mb-3" style="margin:0 auto">
+                                    <button type="submit" class="btn btn-primary">Save profile</button>
+                                    <a href="/admin/user" class="btn btn-secondary ms-3">Close</a>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

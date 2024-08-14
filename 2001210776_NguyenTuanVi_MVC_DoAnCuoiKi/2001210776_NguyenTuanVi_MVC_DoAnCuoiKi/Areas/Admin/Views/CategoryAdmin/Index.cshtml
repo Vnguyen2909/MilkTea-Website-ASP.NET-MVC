@@ -1,0 +1,47 @@
+﻿
+@model List<_2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<h1 style="text-align:center; margin: 10px 0px">Loại Sản Phẩm</h1>
+
+<div class="card mb-4" style="margin: 10px; padding:0px 10px">
+    <div class="card-header" style="margin: 10px 0px">
+        <i class="fas fa-table me-1"></i>
+        DANH SÁCH LOẠI SẢN PHẨM
+    </div>
+    <!-- Navbar Search-->
+    <form class="input-group" style="margin:0 auto; width: 350px">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="@ViewBag.Search" name="search" />
+        <button type="submit" class="btn btn-outline-primary">search</button>
+    </form>
+    <!--End Search-->
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Mã Loại</th>
+                    <th>Tên Loại</th>
+                    <th>Tác vụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ID_Category</td>
+                            <td>@item.Name_Category</td>
+                            <td>
+                                @Html.ActionLink("List Product", "List_Product", new { id = item.ID_Category }) |
+                                @Html.ActionLink("Details", "Detail", new { id = item.ID_Category })
+                            </td>
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+</div>
+

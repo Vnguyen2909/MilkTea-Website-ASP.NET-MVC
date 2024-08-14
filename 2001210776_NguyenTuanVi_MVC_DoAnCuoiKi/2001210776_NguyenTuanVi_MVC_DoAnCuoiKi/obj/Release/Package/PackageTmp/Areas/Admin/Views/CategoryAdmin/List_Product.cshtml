@@ -1,0 +1,40 @@
+﻿
+@model List<_2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.Models.Product>
+
+@{
+    ViewBag.Title = "List_Product";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<h1 style="padding-top: 20px; margin: 0 auto">DANH SÁCH SẢN PHẨM</h1>
+
+<div class="card-body" style="padding: 20px">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã sản phẩm </th>
+                <th>Mã loại sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="width:10%">@item.ID_Product</td>
+                    <td style="width:10%">@item.ID_Category</td>
+                    <td style="width:25%">@item.Name_Product</td>
+                    <td>
+                        <img src="~/img/product/@item.Images" alt="Alternate Text" style="width:30%" />
+                    </td>
+                    <td style="width:10%">@item.QuantityInventory</td>
+                    <td style="width:10%">@item.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,116 @@
+﻿
+@model List<_2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.Models.Product>
+
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg">
+    <img src="~/img/banner/banner5.png" alt="Alternate Text"/>
+</section>
+<!-- Breadcrumb Section End -->
+<section class="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg3 col-md-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Danh mục theo loại</span>
+                    </div>
+                    <ul>
+                        @foreach (var item in ViewBag.Category)
+                        {
+                            <li>
+                                <a href="@Url.Action("ProductCategory", "Product", new { id= item.ID_Category})">@item.Name_Category</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-8">
+                <div class="filter__item">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-5">
+                            <div class="filter__sort">
+                                <div class="btn-group col-md-6">
+                                    <form controller="ProductsController" action="Index" method="get">
+                                        <div style="width: 160%;" class="form-group d-flex flex-row align-items-center ">
+                                            <span>Sort By</span>
+                                            <select style="width:200%" id="sortOder" name="sortOder" onchange="this.form.submit()">
+                                                <option value="">Chọn mục sắp xếp</option>
+                                                <option value="name">Sắp xếp theo tên</option>
+                                                <option value="price">Sắp xếp theo giá</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="@Url.Content("../img/product/"+item.Images)" style="width:100%">
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li>
+                                            <a href="/Product/Detail/@item.ID_Product"><i class="fa fa-shopping-cart"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">@item.Name_Product</a></h6>
+                                    <h5>@item.Price</h5>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="paging " style="margin: 0 auto; margin-top: 10px">
+                    @{
+                        int prevPage = ViewBag.Page - 1;
+                        if (prevPage <= 0)
+                        {
+                            prevPage = 1;
+                        }
+
+                        int nextPage = ViewBag.Page + 1;
+                        if (nextPage > ViewBag.NoofPages)
+                        {
+                            nextPage = ViewBag.NoofPages;
+                        }
+                    }
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a href="/Product/Index?page=@prevPage" class="page-link" style="background-color: #7fad39; color:white">Prev</a>
+                        </li>
+                        @for (int i = 0; i < ViewBag.NoofPages; i++)
+                        {
+                            if (i + 1 == ViewBag.Page)
+                            {
+                                <li class="page-item">
+                                    <a href="/Product/Index?page=@(i+1)" class="page-link" style=" color:#7fad39">@(i + 1)</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item">
+                                    <a href="/Product/Index?page=@(i+1)" class="page-link" style=" color:#7fad39">@(i + 1)</a>
+                                </li>
+                            }
+                        }
+                        <li class="page-item">
+                            <a href="/Product/Index?page=@nextPage" class="page-link" style="background-color: #7fad39; color:white">Next</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

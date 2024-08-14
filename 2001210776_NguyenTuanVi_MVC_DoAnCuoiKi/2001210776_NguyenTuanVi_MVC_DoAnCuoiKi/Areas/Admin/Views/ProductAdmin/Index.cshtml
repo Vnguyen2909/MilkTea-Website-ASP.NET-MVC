@@ -1,0 +1,99 @@
+﻿
+@model List<_2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.Models.Product>
+
+@{
+    ViewBag.Title = "_ViewStartAdmin";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+
+<h1 style="text-align:center; margin: 10px 0px">Sản Phẩm</h1>
+
+<button class="btn btn-secondary" style="margin: 0 auto; width: 120px;">
+    @Html.ActionLink("Create New", "CreateProduct", null, new { style = "color: white;text-decoration: none" })
+</button>
+<div class="card mb-4" style="margin: 10px; padding:0px 10px">
+    <div class="card-header" style="margin: 10px 0px">
+        <i class="fas fa-table me-1"></i>
+        DANH SÁCH SẢN PHẨM
+    </div>
+    <!-- Navbar Search-->
+    <form class="input-group" style="margin:0 auto; width: 350px">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="@ViewBag.Search" name="search" />
+        <button type="submit" class="btn btn-outline-primary">search</button>
+    </form>
+    <!--End Search-->
+
+    <div class="card-body">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th>Mã sản phẩm </th>
+                    <th>Mã loại sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Hình</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                    <th>Tác vụ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="width:10%;">@item.ID_Product</td>
+                        <td style="width:10%">@item.ID_Category</td>
+                        <td style="width:25%">@item.Name_Product</td>
+                        <td>
+                            <img src="~/img/product/@item.Images" alt="Alternate Text" style="width:30%" />
+                        </td>
+                        <td style="width:10%">@item.QuantityInventory</td>
+                        <td style="width:5%">@item.Price</td>
+                        <td style="width:15%">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID_Product }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID_Product })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <div class="paging" style="margin: 0 auto; margin-top: 10px">
+                @{
+                    int prevPage = ViewBag.Page = 1;
+                    if (prevPage <= 0)
+                    {
+                        prevPage = 1;
+                    }
+
+                    int nextPage = ViewBag.Page + 1;
+                    if (nextPage > ViewBag.NoofPages)
+                    {
+                        nextPage = ViewBag.NoofPages;
+                    }
+                }
+            </div>
+        </table>
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a href="/Admin/ProductAdmin/Index?page=@prevPage" class="page-link" style="background-color: #7fad39; color:white">Prev</a>
+            </li>
+            @for (int i = 0; i < ViewBag.NoofPages; i++)
+            {
+                if (i + 1 == ViewBag.Page)
+                {
+                    <li class="page-item">
+                        <a href="/Admin/ProductAdmin/Index?page=@(i+1)" class="page-link" style=" color:#7fad39">@(i + 1)</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <a href="/Admin/ProductAdmin/Index?page=@(i+1)" class="page-link" style=" color:#7fad39">@(i + 1)</a>
+                    </li>
+                }
+            }
+            <li class="page-item disabled">
+                <a href="/Admin/ProductAdmin/Index?page=@nextPage" class="page-link" style="background-color: #7fad39; color:white">Next</a>
+            </li>
+        </ul>
+    </div>
+</div>

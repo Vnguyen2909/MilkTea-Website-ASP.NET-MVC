@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container style="max-width: 1200px"">
+    <div class="col-md-12" id="load_data">
+        @Html.Action("Partial_Item_Cart", "ShoppingCart")
+    </div> 
+    <div class="col-md-12" style="margin: 20px">
+        <div class="text-right">
+            <a href="#" class="btn btn-danger btnDeleteAll"> Xóa tất cả</a>
+            <a href="#" class="btn btn-success btnPay"> Thanh toán </a>  
+        </div>
+    </div>
+</div>
+

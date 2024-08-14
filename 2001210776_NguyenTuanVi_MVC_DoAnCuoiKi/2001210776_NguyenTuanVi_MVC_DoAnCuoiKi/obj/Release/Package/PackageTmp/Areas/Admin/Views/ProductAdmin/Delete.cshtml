@@ -1,0 +1,47 @@
+﻿@model _2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<div class="text-center">
+    <h2>Xóa Sản Phẩm</h2>
+    <h3>Bạn có chắc chắn muốn xóa sản phẩm này?</h3>
+    <hr />
+    <dl class="dl-horizontal text-left">
+        <dt>
+            Mã Loại sản phẩm : @Html.DisplayFor(model => model.ID_Category)
+        </dt>
+        <dt>
+            Mã Sản phẩm : @Html.DisplayFor(model => model.ID_Product)
+        </dt>
+        <dt>
+            Tên Sản phẩm : @Html.DisplayFor(model => model.Name_Product)
+        </dt>
+        <dt>
+            Giá : @Html.DisplayFor(model => model.Price)
+        </dt>
+        <dt>
+            Số lượng tồn: @Html.DisplayFor(model => model.QuantityInventory)
+        </dt>
+        <dt>
+            Hình ảnh : @Html.DisplayFor(model => model.Images)
+        </dt>
+        <dt>
+            Ghi chú : @Html.DisplayFor(model => model.Status)
+        </dt>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <div class="btn btn-info">
+                @Html.ActionLink("Back", "Index", null, new { style = "color: white; text-decoration: none;" })
+            </div>
+        </div>
+    }
+</div>
+

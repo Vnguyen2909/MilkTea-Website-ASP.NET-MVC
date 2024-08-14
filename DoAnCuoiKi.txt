@@ -1,0 +1,9 @@
+--link YOUTUBE GIỚI THIỆU ĐỒ ÁN--
+https://youtu.be/7ODab3ceYE0
+--Thông tin tài khoản user, admin
+---USER
+tk: nguyenvi123 mk:123456
+---ADMIN
+tk:admin mk: admin123
+---Deploy web app lên internet
+http://nguyenvi123-001-site1.etempurl.com/

@@ -1,0 +1,105 @@
+﻿@model _2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.ViewModel.RegisterVM
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutFromAccount.cshtml";
+}
+
+
+ <div class="container" style="margin-top: 50px">
+     <div class="row mt-4 align-items-center">
+            <!-- For Demo Purpose -->
+            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+                <img src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg" alt="" class="img-fluid mb-3 d-none d-md-block">
+            </div>
+
+            <!-- Registeration Form -->
+            <div class="col-md-7 col-lg-6 ml-auto">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                {
+                    <div class="row">
+                         <!-- Full Name -->
+                        <div class="col-md-12">
+                            @Html.LabelFor(x => x.FullName)
+                            @Html.TextBoxFor(x => x.FullName, new { placeholder = "FullName", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.FullName)
+                        </div>
+
+                        <!-- User Name -->
+                        <div class="col-md-12">
+                            @Html.LabelFor(x => x.Username)
+                            @Html.TextBoxFor(x => x.Username, new { placeholder = "UserName", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Username)
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="col-md-12">
+                            @Html.LabelFor(x => x.Email)
+                            @Html.TextBoxFor(x => x.Email, new { placeholder = "Email", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Email)
+                        </div>
+
+                        <!-- Password -->
+                        <div class="col-md-12">
+                            @Html.LabelFor(x => x.Password)
+                            @Html.PasswordFor(x => x.Password, new { placeholder = "Password", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Password)
+                        </div>
+
+                        <!-- Password Confirmation -->
+                        <div class="col-md-12">
+                            @Html.LabelFor(x => x.ComfirmPassword)
+                            @Html.PasswordFor(x => x.ComfirmPassword, new { placeholder = "ComfirmPassword", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.ComfirmPassword)
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="col-md-12">
+                            @Html.LabelFor(x => x.Phone)
+                            @Html.TextBoxFor(x => x.Phone, new { placeholder = "Phone", @class = "form-control" })
+                        </div>
+
+                        <!-- Date of Birth -->
+                        @*<div class="col-md-12">
+                            @Html.LabelFor(x => x.Birthday)
+                            @Html.TextBoxFor(x => x.Birthday, new { placeholder = "Birthday", @class = "form-control", Type = "date" })
+                        </div>*@
+
+                        <!-- Address -->
+                        <div class="col-md-12">
+                            @Html.LabelFor(x => x.Address)
+                            @Html.TextBoxFor(x => x.Address, new { placeholder = "Address", @class = "form-control" })
+                        </div>
+                    </div>
+                    <!-- Submit Button -->
+
+                    <button type="submit" class="btn btn-primary btn-block py-2" style="margin:10px 0px">Register</button>
+
+                    <!-- Divider Text -->
+                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                        <div class="border-bottom w-100 ml-5"></div>
+                        <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                        <div class="border-bottom w-100 mr-5"></div>
+                    </div>
+
+                    <!-- Social Login -->
+                    <div class="form-group col-lg-12 mx-auto">
+                        <a href="#" class="btn btn-primary btn-block py-2 btn-facebook">
+                            <i class="fa fa-facebook-f mr-2"></i>
+                            <span class="font-weight-bold">Continue with Facebook</span>
+                        </a>
+                        <a href="#" class="btn btn-primary btn-block py-2 btn-twitter">
+                            <i class="fa fa-twitter mr-2"></i>
+                            <span class="font-weight-bold">Continue with Twitter</span>
+                        </a>
+                    </div>
+
+                    <!-- Already Registered -->
+                    <div class="text-center w-100">
+                        <p class="text-muted font-weight-bold">Already Registered? <a href="~/Account/Login" class="text-primary ml-2">Login</a></p>
+                    </div>
+                 }
+            </div>
+        </div>
+    </div>
+

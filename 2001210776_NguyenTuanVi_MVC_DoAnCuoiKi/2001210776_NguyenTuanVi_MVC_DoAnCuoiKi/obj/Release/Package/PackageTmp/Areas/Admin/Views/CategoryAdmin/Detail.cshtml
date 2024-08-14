@@ -1,0 +1,27 @@
+﻿
+@model _2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.Models.Category
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+
+<div style="text-align:center">
+    <h2>Chi Tiết Danh Mục Sản Phẩm </h2>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Mã Danh Mục: @Html.DisplayFor(model => model.ID_Category)
+            </dt>
+            <dt>
+                Tên Danh Mục: @Html.DisplayFor(model => model.Name_Category)
+            </dt>
+            <button class="btn btn-outline-primary">
+                @Html.ActionLink("Back", "Index")
+            </button>
+        </dl>
+    </div>
+</div>
+

@@ -1,0 +1,65 @@
+﻿@model _2001210776_NguyenTuanVi_MVC_DoAnCuoiKi.Models.Product
+
+@{
+    ViewBag.Title = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<h2 style="text-align:center; margin-top: 20px">Thêm Sản Phẩm</h2>
+<div class="card" style="padding: 30px; margin: 20px 200px">
+    @using (Html.BeginForm("CreateProduct", "ProductAdmin", FormMethod.Post, new { entype = "multipart/form-data" }))
+    {
+    <div class="row">
+
+        <!-- Category ID -->
+        <div class="col-md-12" style="margin: 5px 0px">
+            @Html.LabelFor(x => x.ID_Category, "Mã loại sản phẩm")
+            @Html.DropDownListFor(x => x.ID_Category, new SelectList(ViewBag.Categories, "ID_Category", "Name_Category"), new { @class = "from-control" })
+            @Html.ValidationMessageFor(x => x.ID_Category, "", new { @class = "from-control" })
+        </div>
+
+        <!-- Product Name -->
+        <div class="col-md-12" style="margin: 5px 0px">
+            @Html.LabelFor(x => x.Name_Product, "Tên sản phẩm")
+            @Html.TextBoxFor(x => x.Name_Product, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Name_Product, "", new { @class = "from-control" })
+        </div>
+
+        <!-- Price -->
+        <div class="col-md-12" style="margin: 5px 0px">
+            @Html.LabelFor(x => x.Price, "Price")
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Price, "", new { @class = "from-control" })
+        </div>
+        <!-- QuantityInventory -->
+        <div class="col-md-12" style="margin: 5px 0px">
+            @Html.LabelFor(x => x.QuantityInventory, "Quantity")
+            @Html.TextBoxFor(x => x.QuantityInventory, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.QuantityInventory, "", new { @class = "from-control" })
+        </div>
+
+        <!-- Image -->
+        <div class="col-md-12" style="margin: 5px 0px">
+            @Html.LabelFor(model => model.Images, "Ảnh", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(model => model.Images, new { @class = "form-control", type = "file", placeholder = "Ảnh" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Images)
+        </div>
+        <!-- Status -->
+        <div class="col-md-12" style="margin: 5px 0px">
+            @Html.LabelFor(x => x.Status, "Mô tả")
+            @Html.TextBoxFor(x => x.Status, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Images, "", new { @class = "from-control" })
+        </div>
+        <div class="col-md-12" style="margin: 5px 0px">
+            <button type="submit" class="btn btn-primary">Thêm sản phẩm</button> &nbsp;
+            <div class="btn btn-info">
+                @Html.ActionLink("Back", "Index", null, new { style = "color: white; text-decoration: none;" })
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+
